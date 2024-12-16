@@ -27,17 +27,12 @@ class CategorieController extends Controller
     public function store(Request $request)
     {
         try {
-            $article = new Article([
-                "designation" => $request->input('designation'),
-                "marque" => $request->input('marque'),
-                "reference" => $request->input('reference'),
-                "qtestock" => $request->input('qtestock'),
-                "prix" => $request->input('prix'),
-                "imageart" => $request->input('imageart'),
-                "scategorieID" => $request->input('scategorieID'),
+            $categorie = new Categorie([
+                "nomcategorie" => $request->input("nomcategorie"),
+                "imagecategorie" => $request->input("imagecategorie")
             ]);
-            $article->save();
-            return response()->json($article);
+            $categorie->save();
+            return response()->json($categorie);
         } catch (\Exception $e) {
             return response()->json("insertion impossible {$e->getMessage()}");
         }
